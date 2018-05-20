@@ -30,11 +30,23 @@
 </template>
 
 <script>
+import Vue from 'vue'
 export default {
-  name: 'Home',
+  name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      hashtag : ''
+    }
+  },
+
+  watch:{
+    hashtag: function(val){
+        if (val.startsWith("#")){
+          Vue.localStorage.set('hashtag', val)
+        }else{
+          Vue.localStorage.set('hashtag', "#"+val)
+        }
+        
     }
   }
 }
